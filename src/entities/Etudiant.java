@@ -9,7 +9,7 @@ public class Etudiant {
     private int id;
     private String prenom;
     private String nom;
-    private Date date;
+    private LocalDate date;
 
     public Etudiant() {
     }
