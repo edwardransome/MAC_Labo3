@@ -1,3 +1,9 @@
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+import java.time.LocalDate;
+
 public class Main{
     public static void main(String [] args)
     {
@@ -13,7 +19,9 @@ public class Main{
 
 
         //1ere transaction
-
+        Etudiant bob = new Etudiant("Bob", "Dupont", LocalDate.of(1990,1,1));
+        session.save(bob);
+        session.getTransaction().commit();
 
         //2eme transaction
 

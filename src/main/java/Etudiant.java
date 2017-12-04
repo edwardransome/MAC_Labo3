@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+
 /**
  * Entity representing a student
  *
@@ -14,7 +16,7 @@ public class Etudiant {
     public Etudiant() {
     }
 
-    public Etudiant(String prenom, String nom, Date date) {
+    public Etudiant(String prenom, String nom, LocalDate date) {
         this.prenom = prenom;
         this.nom = nom;
         this.date = date;
@@ -44,11 +46,11 @@ public class Etudiant {
         this.nom = nom;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    private void setDate(Date date) {
+    private void setDate(LocalDate date) {
         this.date = date;
     }
 }
