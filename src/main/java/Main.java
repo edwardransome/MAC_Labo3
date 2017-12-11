@@ -37,7 +37,7 @@ public class Main{
         session.save(tweb);
         session.save(amt);
         session.save(mac);
-        
+
         session.getTransaction().commit();
 
         //2eme transaction
