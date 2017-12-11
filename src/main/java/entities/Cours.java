@@ -2,6 +2,10 @@ package entities;
 
 import javax.persistence.*;
 
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
+
 import static javax.persistence.GenerationType.IDENTITY;
 
 /**
@@ -19,6 +23,10 @@ public class Cours {
     private int id;
     private String titre;
     private int credit;
+
+    @OneToMany(targetEntity = Inscription.class, fetch = FetchType.LAZY,
+            cascade = {CascadeType.ALL}, mappedBy = "cours")
+    private Set inscriptions = new HashSet();
 
     public Cours() {
     }
