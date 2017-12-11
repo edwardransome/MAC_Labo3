@@ -16,9 +16,8 @@ public class Main{
         Session session = sessionFactory.openSession();
 
 
-
-
         //1ere transaction
+        session.beginTransaction();
         Etudiant bob = new Etudiant("Bob", "Dupont", LocalDate.of(1990,1,1));
         session.save(bob);
         session.getTransaction().commit();
