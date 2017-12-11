@@ -15,6 +15,8 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Entity
 @Table(name = "etudiants")
 public class Etudiant {
+    private final int PRENOM_LENGTH = 45;
+    private final int NOM_LENGTH = 45;
     private int id;
     private String prenom;
     private String nom;
@@ -44,7 +46,7 @@ public class Etudiant {
         this.id = id;
     }
 
-    @Column(name = "prenom", nullable = false)
+    @Column(name = "prenom", nullable = false, length = PRENOM_LENGTH)
     public String getPrenom() {
         return prenom;
     }
@@ -53,7 +55,7 @@ public class Etudiant {
         this.prenom = prenom;
     }
 
-    @Column(name = "nom", nullable = false)
+    @Column(name = "nom", nullable = false, length = NOM_LENGTH)
     public String getNom() {
         return nom;
     }
