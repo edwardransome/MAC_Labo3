@@ -7,7 +7,7 @@ import java.time.LocalDate;
 public class Main{
     public static void main(String [] args)
     {
-        System.out.println("Hello world");
+        System.out.println("Start session Factory");
 
         SessionFactory sessionFactory = new Configuration()
                 .configure()
@@ -26,6 +26,9 @@ public class Main{
 
         session.close();
         sessionFactory.close();
+
+        System.out.println("Session Factory closed");
+
 
     }
 }

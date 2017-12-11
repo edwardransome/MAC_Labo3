@@ -8,8 +8,8 @@
         <id name="id" type="int" column="id">
             <generator class="native"/>
         </id>
-        <property name="prenom" type="string"/>
-        <property name="nom" type="string"/>
-        <property name="date" type="date"/>
+        <property name="prenom" type="string" not-null="true"/>
+        <property name="nom" type="string" not-null="true"/>
+        <property name="date" not-null="true"/>
     </class>
 </hibernate-mapping>
