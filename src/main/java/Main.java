@@ -43,8 +43,20 @@ public class Main{
         //2eme transaction
 
         session.beginTransaction();
-        Etudiant loaded = session.load(Etudiant.class, 1);
-        System.out.println("Loaded student: " + loaded);
+        //avec ID
+        Etudiant loadedStudent = session.load(Etudiant.class, 1);
+        System.out.println("Loaded student: " + loadedStudent);
+        Cours loadedCourse = session.load(Cours.class, 1);
+        System.out.println("Loaded course: " +  loadedCourse);
+
+        //avec objet
+        /*
+        michael = session.load(michael);
+        System.out.println("Loaded student: " + loadedStudent2);
+        Cours loadedCourse2 = session.load(Cours.class, tweb);
+        System.out.println("Loaded course: " +  loadedCourse2);
+        */
+
 
         session.getTransaction().commit();
 
