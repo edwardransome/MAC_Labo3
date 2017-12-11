@@ -13,6 +13,10 @@ public class Cours {
     public Cours() {
     }
 
+    public String toString(){
+        return "Cours : "+titre+" , crédit : "+credit;
+    }
+
     public Cours(String titre, int credit) {
         this.titre = titre;
         this.credit = credit;
