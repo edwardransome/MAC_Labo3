@@ -7,5 +7,6 @@
     <session-factory>
         <mapping class="entities.Etudiant" />
         <mapping class="entities.Cours" />
+        <mapping class="entities.Inscription" />
     </session-factory>
 </hibernate-configuration>
