@@ -2,6 +2,8 @@ package entities;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -21,6 +23,10 @@ public class Etudiant {
     private String prenom;
     private String nom;
     private LocalDate date;
+
+    @OneToMany(targetEntity = Inscription.class, fetch = FetchType.LAZY,
+    cascade = {CascadeType.ALL}, mappedBy = "etudiant_id")
+    private Set inscriptions = new HashSet();
 
     public Etudiant() {
     }

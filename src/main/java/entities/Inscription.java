@@ -12,9 +12,12 @@ public class Inscription {
     @Column(name = "grade", nullable = true, length = 1)
     private String grade;
 
-    
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id", nullable = true)
     private int cours_id;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id", nullable = true)
     private int etudiant_id;
 
 
