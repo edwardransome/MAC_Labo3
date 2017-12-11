@@ -13,12 +13,12 @@ public class Inscription {
     private String grade;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id", nullable = true)
-    private int cours_id;
+    @JoinColumn(name = "cours_id", nullable = true)
+    private Cours cours;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id", nullable = true)
-    private int etudiant_id;
+    @JoinColumn(name = "etudiant_id", nullable = true)
+    private Etudiant etudiant;
 
 
 }

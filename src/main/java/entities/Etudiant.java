@@ -25,7 +25,7 @@ public class Etudiant {
     private LocalDate date;
 
     @OneToMany(targetEntity = Inscription.class, fetch = FetchType.LAZY,
-    cascade = {CascadeType.ALL}, mappedBy = "etudiant_id")
+    cascade = {CascadeType.ALL}, mappedBy = "etudiant")
     private Set inscriptions = new HashSet();
 
     public Etudiant() {
