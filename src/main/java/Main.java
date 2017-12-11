@@ -47,12 +47,12 @@ public class Main{
 
         session.beginTransaction();
 
-        List<Etudiant> resultat =session.createQuery( "from Etudiant" ).list();
+        List<Etudiant> resultat = session.createQuery( "from Etudiant" ).list();
         for ( Etudiant p : resultat ) {
             System.out.println(p );
         }
 
-        List<Cours> resultat_cours =session.createQuery( "from Cours" ).list();
+        List<Cours> resultat_cours = session.createQuery( "from Cours" ).list();
         for ( Cours c : resultat_cours ) {
             System.out.println( c);
         }
