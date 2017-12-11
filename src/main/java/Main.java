@@ -1,8 +1,11 @@
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main{
     public static void main(String [] args)
@@ -16,12 +19,12 @@ public class Main{
         Session session = sessionFactory.openSession();
 
 
-        //1ere transaction
+        System.out.println("Start transaction 1");
         session.beginTransaction();
         Etudiant bob = new Etudiant("Bob", "Dupont", LocalDate.of(1990,1,1));
         Etudiant aurelie = new Etudiant("Aurelie", "Eilerua", LocalDate.of(1991,4,5));
         Etudiant michael = new Etudiant("Michael", "Jackson", LocalDate.of(1993,9,8));
-        Etudiant eddie = new Etudiant("eddie", "Malou", LocalDate.of(1994,12,3));
+        Etudiant eddie = new Etudiant("Eddie", "Malou", LocalDate.of(1994,12,3));
 
         Cours tweb = new Cours("TWEB",4);
         Cours amt = new Cours("AMT",3);
@@ -40,23 +43,19 @@ public class Main{
 
         session.getTransaction().commit();
 
-        //2eme transaction
+        System.out.println("Start transaction 2");
 
         session.beginTransaction();
-        //avec ID
-        Etudiant loadedStudent = session.load(Etudiant.class, 1);
-        System.out.println("Loaded student: " + loadedStudent);
-        Cours loadedCourse = session.load(Cours.class, 1);
-        System.out.println("Loaded course: " +  loadedCourse);
 
-        //avec objet
-        /*
-        michael = session.load(michael);
-        System.out.println("Loaded student: " + loadedStudent2);
-        Cours loadedCourse2 = session.load(Cours.class, tweb);
-        System.out.println("Loaded course: " +  loadedCourse2);
-        */
+        List<Etudiant> resultat =session.createQuery( "from Etudiant" ).list();
+        for ( Etudiant p : resultat ) {
+            System.out.println(p );
+        }
 
+        List<Cours> resultat_cours =session.createQuery( "from Cours" ).list();
+        for ( Cours c : resultat_cours ) {
+            System.out.println( c);
+        }
 
         session.getTransaction().commit();
 
