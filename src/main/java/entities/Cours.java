@@ -1,3 +1,9 @@
+package entities;
+
+import javax.persistence.*;
+
+import static javax.persistence.GenerationType.IDENTITY;
+
 /**
  * Entity representing a cours
  *
@@ -5,6 +11,8 @@
  * @author Michaël Spierer
  */
 
+@Entity
+@Table(name = "cours")
 public class Cours {
     private int id;
     private String titre;
@@ -22,6 +30,9 @@ public class Cours {
         this.credit = credit;
     }
 
+    @Id
+    @GeneratedValue(strategy = IDENTITY)
+    @Column(name = "id", unique = true, nullable = false)
     public int getId() {
         return id;
     }
@@ -30,6 +41,7 @@ public class Cours {
         this.id = id;
     }
 
+    @Column(name = "credit", nullable = false)
     public int getCredit() {
         return credit;
     }
@@ -38,6 +50,7 @@ public class Cours {
         this.credit = credit;
     }
 
+    @Column(name = "titre", nullable = false)
     public String getTitre() {
         return titre;
     }

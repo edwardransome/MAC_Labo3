@@ -1,10 +1,10 @@
-import org.hibernate.Query;
+import entities.Cours;
+import entities.Etudiant;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Main{

@@ -1,4 +1,9 @@
+package entities;
+
+import javax.persistence.*;
 import java.time.LocalDate;
+
+import static javax.persistence.GenerationType.IDENTITY;
 
 /**
  * Entity representing a student
@@ -7,6 +12,8 @@ import java.time.LocalDate;
  * @author Michaël Spierer
  */
 
+@Entity
+@Table(name = "etudiants")
 public class Etudiant {
     private int id;
     private String prenom;
@@ -26,6 +33,9 @@ public class Etudiant {
         return prenom + " " + nom + " né le " + date;
     }
 
+    @Id
+    @GeneratedValue(strategy = IDENTITY)
+    @Column(name = "id", unique = true, nullable = false)
     public int getId() {
         return id;
     }
@@ -34,6 +44,7 @@ public class Etudiant {
         this.id = id;
     }
 
+    @Column(name = "prenom", nullable = false)
     public String getPrenom() {
         return prenom;
     }
@@ -42,6 +53,7 @@ public class Etudiant {
         this.prenom = prenom;
     }
 
+    @Column(name = "nom", nullable = false)
     public String getNom() {
         return nom;
     }
@@ -50,6 +62,7 @@ public class Etudiant {
         this.nom = nom;
     }
 
+    @Column(name = "date", nullable = false)
     public LocalDate getDate() {
         return date;
     }
