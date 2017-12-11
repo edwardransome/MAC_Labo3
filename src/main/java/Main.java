@@ -64,6 +64,7 @@ public class Main{
 
         System.out.println("Session Factory closed");
 
+        
 
     }
 }
