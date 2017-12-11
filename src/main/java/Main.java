@@ -24,6 +24,12 @@ public class Main{
 
         //2eme transaction
 
+        session.beginTransaction();
+        Etudiant loaded = session.load(Etudiant.class, 1);
+        System.out.println("Loaded student: " + loaded);
+
+        session.getTransaction().commit();
+
         session.close();
         sessionFactory.close();
 

@@ -22,6 +22,10 @@ public class Etudiant {
         this.date = date;
     }
 
+    public String toString(){
+        return prenom + " " + nom + " né le " + date;
+    }
+
     public int getId() {
         return id;
     }
