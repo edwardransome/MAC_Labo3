@@ -24,10 +24,11 @@ public class Etudiant {
     private String nom;
     private LocalDate date;
 
+    /*
     @OneToMany(targetEntity = Inscription.class, fetch = FetchType.LAZY,
     cascade = {CascadeType.ALL}, mappedBy = "etudiant")
     private Set inscriptions = new HashSet();
-
+*/
     public Etudiant() {
     }
 
@@ -77,5 +78,14 @@ public class Etudiant {
 
     private void setDate(LocalDate date) {
         this.date = date;
+    }
+
+    @ManyToMany(mappedBy = "players", cascade = CascadeType.ALL)
+    public Set<Cours> getCours(){
+
+    }
+
+    public void ajouterCours(Cours cours){
+
     }
 }

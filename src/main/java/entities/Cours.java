@@ -24,21 +24,23 @@ public class Cours {
     private String titre;
     private int credit;
 
+    /*
     @OneToMany(targetEntity = Inscription.class, fetch = FetchType.LAZY,
             cascade = {CascadeType.ALL}, mappedBy = "cours")
     private Set inscriptions = new HashSet();
-
+*/
     public Cours() {
-    }
-
-    public String toString(){
-        return "Cours : "+titre+" , crédit : "+credit;
     }
 
     public Cours(String titre, int credit) {
         this.titre = titre;
         this.credit = credit;
     }
+
+    public String toString(){
+        return "Cours : "+titre+" , crédit : "+credit;
+    }
+
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
@@ -68,4 +70,5 @@ public class Cours {
     private void setTitre(String titre) {
         this.titre = titre;
     }
+
 }
