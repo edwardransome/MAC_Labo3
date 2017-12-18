@@ -64,6 +64,14 @@ public class Main{
         Cours amt = new Cours("AMT",3);
         Cours mac = new Cours("MAC",4);
 
+        //Incscrire des eleves a des cours
+        bob.ajouterCours(tweb);
+        bob.ajouterCours(mac);
+        michael.ajouterCours(amt);
+        michael.ajouterCours(tweb);
+        michael.ajouterCours(mac);
+        eddie.ajouterCours(tweb);
+
         //Save les etudiants
         session.save(bob);
         session.save(aurelie);
@@ -77,6 +85,8 @@ public class Main{
 
         session.getTransaction().commit();
 
+
+
         System.out.println("Start transaction 2");
 
         session.beginTransaction();
@@ -84,17 +94,6 @@ public class Main{
 
         afficheEtudiants(session);
         afficheCours(session);
-
-        session.getTransaction().commit();
-
-        System.out.println("Start transaction 3");
-
-        session.beginTransaction();
-
-        bob.ajouterCours(tweb);
-        session.save(bob);
-        session.save(tweb);
-
 
         session.getTransaction().commit();
 
