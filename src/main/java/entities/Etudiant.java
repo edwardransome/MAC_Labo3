@@ -19,9 +19,20 @@ import static javax.persistence.GenerationType.IDENTITY;
 public class Etudiant {
     private final int PRENOM_LENGTH = 45;
     private final int NOM_LENGTH = 45;
+
+
+    @Id
+    @GeneratedValue(strategy = IDENTITY)
+    @Column(name = "id", unique = true, nullable = false)
     private int id;
+
+    @Column(name = "prenom", nullable = false, length = PRENOM_LENGTH)
     private String prenom;
+
+    @Column(name = "nom", nullable = false, length = NOM_LENGTH)
     private String nom;
+
+    @Column(name = "date", nullable = false)
     private LocalDate date;
 
 
@@ -42,9 +53,6 @@ public class Etudiant {
         return prenom + " " + nom + " né le " + date;
     }
 
-    @Id
-    @GeneratedValue(strategy = IDENTITY)
-    @Column(name = "id", unique = true, nullable = false)
     public int getId() {
         return id;
     }
@@ -53,7 +61,6 @@ public class Etudiant {
         this.id = id;
     }
 
-    @Column(name = "prenom", nullable = false, length = PRENOM_LENGTH)
     public String getPrenom() {
         return prenom;
     }
@@ -62,7 +69,6 @@ public class Etudiant {
         this.prenom = prenom;
     }
 
-    @Column(name = "nom", nullable = false, length = NOM_LENGTH)
     public String getNom() {
         return nom;
     }
@@ -71,7 +77,6 @@ public class Etudiant {
         this.nom = nom;
     }
 
-    @Column(name = "date", nullable = false)
     public LocalDate getDate() {
         return date;
     }
