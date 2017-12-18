@@ -2,7 +2,6 @@ package entities;
 
 import javax.persistence.*;
 
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -32,7 +31,7 @@ public class Cours {
     private int credit;
 
     @OneToMany(targetEntity = Inscription.class, fetch = FetchType.LAZY,
-            cascade = {CascadeType.ALL}, mappedBy = "cours")
+            cascade = {CascadeType.REMOVE}, mappedBy = "cours")
     private Set inscriptions = new HashSet();
 
     public Cours() {
@@ -71,7 +70,7 @@ public class Cours {
         this.titre = titre;
     }
 
-    public Set getInscriptions() {
+    public Set<Inscription> getInscriptions() {
         return inscriptions;
     }
 

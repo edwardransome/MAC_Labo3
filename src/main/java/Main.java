@@ -93,6 +93,24 @@ public class Main{
 
         session.getTransaction().commit();
 
+        System.out.println("Start transaction 3");
+
+        session.beginTransaction();
+
+        session.delete(tweb);
+        session.flush();
+        session.getTransaction().commit();
+
+        System.out.println("Start transaction 4");
+
+        session.beginTransaction();
+
+
+        afficheEtudiants(session);
+        afficheCours(session);
+
+        session.getTransaction().commit();
+
 
         session.close();
         sessionFactory.close();
