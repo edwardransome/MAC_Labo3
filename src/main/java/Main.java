@@ -8,6 +8,40 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class Main{
+
+    private static void afficheCours(Session session){
+
+        session.beginTransaction();
+        List<Cours> courses = session.createQuery("from Cours").list();
+        session.getTransaction().commit();
+
+        System.out.println("Cours: ");
+
+        for(Cours course: courses){
+            System.out.println(course.getTitre());
+            course.getEtudiants().forEach(etudiant -> {
+                System.out.print("\t- ");
+                System.out.println(etudiant);
+            });
+        }
+    }
+
+    private static void afficheEtudiants(Session session){
+        session.beginTransaction();
+        List<Etudiant> students = session.createQuery("from Student").list();
+        session.getTransaction().commit();
+
+        System.out.println("Etudiants: ");
+
+        for(Etudiant student: students){
+            System.out.println(student);
+            student.getCours().forEach(course -> {
+                System.out.print("\t- ");
+                System.out.println(course.getTitre());
+            });
+        }
+    }
+
     public static void main(String [] args)
     {
         System.out.println("Start session Factory");
@@ -47,15 +81,9 @@ public class Main{
 
         session.beginTransaction();
 
-        List<Etudiant> resultat = session.createQuery( "from Etudiant" ).list();
-        for ( Etudiant p : resultat ) {
-            System.out.println(p );
-        }
 
-        List<Cours> resultat_cours = session.createQuery( "from Cours" ).list();
-        for ( Cours c : resultat_cours ) {
-            System.out.println( c);
-        }
+        afficheEtudiants(session);
+        afficheCours(session);
 
         session.getTransaction().commit();
 

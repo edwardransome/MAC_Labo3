@@ -20,10 +20,17 @@ import static javax.persistence.GenerationType.IDENTITY;
 public class Cours {
     private final int TITRE_LENGTH = 45;
 
+    @Id
+    @GeneratedValue(strategy = IDENTITY)
+    @Column(name = "id", unique = true, nullable = false)
     private int id;
+
+    @Column(name = "titre", nullable = false, length = TITRE_LENGTH)
     private String titre;
+
+    @Column(name = "credit", nullable = false)
     private int credit;
-    
+
     @OneToMany(targetEntity = Inscription.class, fetch = FetchType.LAZY,
             cascade = {CascadeType.ALL}, mappedBy = "cours")
     private Set inscriptions = new HashSet();
@@ -36,22 +43,10 @@ public class Cours {
         this.credit = credit;
     }
 
-    public Set<Etudiant> getEtudiants(){
-        Set<Etudiant> set = new HashSet<>();
-        for(Object o : inscriptions){
-            set.add(((Inscription)o).getEtudiant());
-        }
-        return set;
-    }
-
     public String toString(){
         return "Cours : "+titre+" , crédit : "+credit;
     }
 
-
-    @Id
-    @GeneratedValue(strategy = IDENTITY)
-    @Column(name = "id", unique = true, nullable = false)
     public int getId() {
         return id;
     }
@@ -60,7 +55,6 @@ public class Cours {
         this.id = id;
     }
 
-    @Column(name = "credit", nullable = false)
     public int getCredit() {
         return credit;
     }
@@ -69,7 +63,6 @@ public class Cours {
         this.credit = credit;
     }
 
-    @Column(name = "titre", nullable = false, length = TITRE_LENGTH)
     public String getTitre() {
         return titre;
     }
@@ -80,5 +73,13 @@ public class Cours {
 
     public Set getInscriptions() {
         return inscriptions;
+    }
+
+    public Set<Etudiant> getEtudiants(){
+        Set<Etudiant> set = new HashSet<>();
+        for(Object o : inscriptions){
+            set.add(((Inscription)o).getEtudiant());
+        }
+        return set;
     }
 }
