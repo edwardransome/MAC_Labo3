@@ -6,9 +6,20 @@ import javax.persistence.*;
 @Table(name = "inscriptions")
 public class Inscription {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", unique = true, nullable = false)
     private int id;
+
+    @Column(name = "grade", nullable = true, length = 1)
     private String grade;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "cours_id", nullable = true)
     private Cours cours;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "etudiant_id", nullable = true)
     private Etudiant etudiant;
 
     public Inscription(){
@@ -20,9 +31,6 @@ public class Inscription {
         this.grade=grade;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", unique = true, nullable = false)
     public int getId() {
         return id;
     }
@@ -31,7 +39,6 @@ public class Inscription {
         this.id = id;
     }
 
-    @Column(name = "grade", nullable = true, length = 1)
     public String getGrade() {
         return grade;
     }
@@ -40,8 +47,6 @@ public class Inscription {
         this.grade = grade;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "cours_id", nullable = true)
     public Cours getCours() {
         return cours;
     }
@@ -50,8 +55,6 @@ public class Inscription {
         this.cours = cours;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "etudiant_id", nullable = true)
     public Etudiant getEtudiant() {
         return etudiant;
     }

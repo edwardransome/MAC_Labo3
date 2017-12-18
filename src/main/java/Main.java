@@ -59,6 +59,18 @@ public class Main{
 
         session.getTransaction().commit();
 
+        System.out.println("Start transaction 3");
+
+        session.beginTransaction();
+
+        bob.ajouterCours(tweb);
+        session.save(bob);
+        session.save(tweb);
+
+
+        session.getTransaction().commit();
+
+
         session.close();
         sessionFactory.close();
 
