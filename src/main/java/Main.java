@@ -12,14 +12,14 @@ public class Main{
     private static void afficheCours(Session session){
 
         session.beginTransaction();
-        List<Cours> courses = session.createQuery("from Cours").list();
+        List<Cours> cours = session.createQuery("from Cours").list();
         session.getTransaction().commit();
 
         System.out.println("Cours: ");
 
-        for(Cours course: courses){
-            System.out.println(course.getTitre());
-            course.getEtudiants().forEach(etudiant -> {
+        for(Cours c: cours){
+            System.out.println(c.getTitre());
+            c.getEtudiants().forEach(etudiant -> {
                 System.out.print("\t- ");
                 System.out.println(etudiant);
             });
@@ -28,14 +28,14 @@ public class Main{
 
     private static void afficheEtudiants(Session session){
         session.beginTransaction();
-        List<Etudiant> students = session.createQuery("from Student").list();
+        List<Etudiant> etudiants = session.createQuery("from Etudiant").list();
         session.getTransaction().commit();
 
         System.out.println("Etudiants: ");
 
-        for(Etudiant student: students){
-            System.out.println(student);
-            student.getCours().forEach(course -> {
+        for(Etudiant etudiant: etudiants){
+            System.out.println(etudiant);
+            etudiant.getCours().forEach(course -> {
                 System.out.print("\t- ");
                 System.out.println(course.getTitre());
             });
