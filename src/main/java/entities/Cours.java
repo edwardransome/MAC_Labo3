@@ -24,11 +24,11 @@ public class Cours {
     private String titre;
     private int credit;
 
-    /*
+
     @OneToMany(targetEntity = Inscription.class, fetch = FetchType.LAZY,
             cascade = {CascadeType.ALL}, mappedBy = "cours")
     private Set inscriptions = new HashSet();
-*/
+
     public Cours() {
     }
 
@@ -71,4 +71,7 @@ public class Cours {
         this.titre = titre;
     }
 
+    public Set getInscriptions() {
+        return inscriptions;
+    }
 }

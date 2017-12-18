@@ -24,11 +24,11 @@ public class Etudiant {
     private String nom;
     private LocalDate date;
 
-    /*
+
     @OneToMany(targetEntity = Inscription.class, fetch = FetchType.LAZY,
     cascade = {CascadeType.ALL}, mappedBy = "etudiant")
     private Set inscriptions = new HashSet();
-*/
+
     public Etudiant() {
     }
 
@@ -80,12 +80,17 @@ public class Etudiant {
         this.date = date;
     }
 
-    @ManyToMany(mappedBy = "players", cascade = CascadeType.ALL)
     public Set<Cours> getCours(){
-
+        Set<Cours> set = new HashSet<>();
+        for(Object o : inscriptions){
+            set.add(((Inscription)o).getCours());
+        }
+        return set;
     }
 
     public void ajouterCours(Cours cours){
-
+        Inscription i = new Inscription(cours,this,null);
+        this.inscriptions.add(i);
+        cours.getInscriptions().add(i);
     }
 }
