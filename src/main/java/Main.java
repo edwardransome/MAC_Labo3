@@ -22,7 +22,7 @@ public class Main{
                 System.out.println(etudiant);
             });
         }
-    }
+    } 
 
     private static void afficheEtudiants(Session session){
         List<Etudiant> etudiants = session.createQuery("from Etudiant").list();
