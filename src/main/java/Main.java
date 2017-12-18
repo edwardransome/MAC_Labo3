@@ -11,9 +11,7 @@ public class Main{
 
     private static void afficheCours(Session session){
 
-        session.beginTransaction();
         List<Cours> cours = session.createQuery("from Cours").list();
-        session.getTransaction().commit();
 
         System.out.println("Cours: ");
 
@@ -27,9 +25,7 @@ public class Main{
     }
 
     private static void afficheEtudiants(Session session){
-        session.beginTransaction();
         List<Etudiant> etudiants = session.createQuery("from Etudiant").list();
-        session.getTransaction().commit();
 
         System.out.println("Etudiants: ");
 
