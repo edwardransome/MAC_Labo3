@@ -35,9 +35,8 @@ public class Etudiant {
     @Column(name = "date", nullable = false)
     private LocalDate date;
 
-
     @OneToMany(targetEntity = Inscription.class, fetch = FetchType.LAZY,
-    cascade = {CascadeType.REMOVE}, mappedBy = "etudiant")
+    cascade = CascadeType.REMOVE, mappedBy = "etudiant")
     private Set inscriptions = new HashSet();
 
     public Etudiant() {
@@ -85,14 +84,14 @@ public class Etudiant {
         this.date = date;
     }
 
-    /*
+
     public Set<Inscription> getInscriptions() {
         return inscriptions;
     }
 
     public void setInscriptions(Set<Inscription> inscriptions) {
         this.inscriptions=inscriptions;
-    }*/
+    }
 
     public Set<Cours> getCours(){
         Set<Cours> set = new HashSet<>();
@@ -104,7 +103,5 @@ public class Etudiant {
 
     public void ajouterCours(Cours cours){
         Inscription i = new Inscription(cours,this,null);
-        this.inscriptions.add(i);
-        cours.getInscriptions().add(i);
     }
 }

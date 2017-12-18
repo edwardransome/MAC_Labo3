@@ -31,7 +31,7 @@ public class Cours {
     private int credit;
 
     @OneToMany(targetEntity = Inscription.class, fetch = FetchType.LAZY,
-            cascade = {CascadeType.REMOVE}, mappedBy = "cours")
+            cascade = CascadeType.REMOVE, mappedBy = "cours")
     private Set inscriptions = new HashSet();
 
     public Cours() {

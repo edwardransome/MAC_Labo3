@@ -30,9 +30,9 @@ public class Inscription {
     }
 
     public Inscription(Cours cours, Etudiant etudiant, String grade) {
-        this.cours=cours;
-        this.etudiant=etudiant;
         this.grade=grade;
+        setCours(cours);
+        setEtudiant(etudiant);
     }
 
     public int getId() {
@@ -57,6 +57,7 @@ public class Inscription {
 
     public void setCours(Cours cours) {
         this.cours = cours;
+        cours.getInscriptions().add(this);
     }
 
     public Etudiant getEtudiant() {
@@ -65,6 +66,7 @@ public class Inscription {
 
     public void setEtudiant(Etudiant etudiant) {
         this.etudiant = etudiant;
+        etudiant.getInscriptions().add(this);
     }
 
 
