@@ -1,5 +1,6 @@
 import entities.Cours;
 import entities.Etudiant;
+import entities.Professeur;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -38,18 +39,7 @@ public class Main{
         }
     }
 
-    public static void main(String [] args)
-    {
-        System.out.println("Start session Factory");
-
-        SessionFactory sessionFactory = new Configuration()
-                .configure()
-                .buildSessionFactory();
-
-        Session session = sessionFactory.openSession();
-
-
-        System.out.println("Start transaction 1");
+    private static void peuplement(Session session){
         session.beginTransaction();
         Etudiant bob = new Etudiant("Bob", "Dupont", LocalDate.of(1990,1,1));
         Etudiant aurelie = new Etudiant("Aurelie", "Eilerua", LocalDate.of(1991,4,5));
@@ -59,6 +49,8 @@ public class Main{
         Cours tweb = new Cours("TWEB",4);
         Cours amt = new Cours("AMT",3);
         Cours mac = new Cours("MAC",4);
+
+        Professeur professeur = new Professeur("Jean","Yves");
 
         //Incscrire des eleves a des cours
         bob.ajouterCours(tweb);
@@ -82,11 +74,23 @@ public class Main{
         session.save(mac);
 
         session.getTransaction().commit();
+    }
+
+    public static void main(String [] args)
+    {
+        System.out.println("Start session Factory");
+
+        SessionFactory sessionFactory = new Configuration()
+                .configure()
+                .buildSessionFactory();
+
+        Session session = sessionFactory.openSession();
 
 
+        System.out.println("Start transaction 1");
+        peuplement(session);
 
         System.out.println("Start transaction 2");
-        //michael.attribuerGrade(amt,'2',session);
 
         session.beginTransaction();
 
@@ -94,44 +98,8 @@ public class Main{
         afficheEtudiants(session);
         afficheCours(session);
 
-        //List<Etudiant> etudiantList = amt.etudiantsEnAttente(session);
 
         session.getTransaction().commit();
-
-        session.close();
-        session = sessionFactory.openSession();
-
-        System.out.println("Start transaction 3");
-
-        session.beginTransaction();
-
-        tweb = (Cours)session.load(Cours.class, new Integer(1));
-        session.delete(tweb);
-        session.flush();
-
-        session.getTransaction().commit();
-
-
-        session.close();
-        session = sessionFactory.openSession();
-
-        System.out.println("Start transaction 4");
-
-        session.beginTransaction();
-
-
-        afficheEtudiants(session);
-        afficheCours(session);
-
-        session.getTransaction().commit();
-
-        //refresh
-        session.beginTransaction();
-        michael = (Etudiant) session.load(Etudiant.class, new Integer(2));
-        session.getTransaction().commit();
-
-        System.out.println("Start transaction 5 : addGrade");
-        michael.attribuerGrade(amt,'2',session);
 
         session.close();
         sessionFactory.close();
