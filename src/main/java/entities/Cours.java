@@ -1,11 +1,14 @@
 package entities;
 
+import org.hibernate.Session;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -83,4 +86,13 @@ public class Cours {
         }
         return set;
     }
+
+    public List<Etudiant> etudiantsEnAttente(Session session){
+        return getInscriptions()
+                .stream()
+                .filter(w -> w.getGrade() == '\0')
+                .map(w -> w.getEtudiant())
+                .collect(Collectors.toList());
+    }
+
 }
