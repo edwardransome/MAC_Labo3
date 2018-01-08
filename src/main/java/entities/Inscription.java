@@ -13,7 +13,7 @@ public class Inscription {
     private int id;
 
     @Column(name = "grade", nullable = true, length = 1)
-    private String grade;
+    private char grade;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cours_id", nullable = true)
@@ -28,7 +28,7 @@ public class Inscription {
     public Inscription(){
     }
 
-    public Inscription(Cours cours, Etudiant etudiant, String grade) {
+    public Inscription(Cours cours, Etudiant etudiant, char grade) {
         this.grade=grade;
         setCours(cours);
         setEtudiant(etudiant);
@@ -42,11 +42,11 @@ public class Inscription {
         this.id = id;
     }
 
-    public String getGrade() {
+    public char getGrade() {
         return grade;
     }
 
-    public void setGrade(String grade) {
+    public void setGrade(char grade) {
         this.grade = grade;
     }
 

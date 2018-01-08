@@ -1,5 +1,6 @@
 package entities;
 
+import org.hibernate.Session;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
@@ -104,6 +105,23 @@ public class Etudiant {
     }
 
     public void ajouterCours(Cours cours){
-        Inscription i = new Inscription(cours,this,null);
+        Inscription i = new Inscription(cours,this,'\0');
+    }
+
+    public void attribuerGrade(Cours cours, char grade, Session session){
+        session.beginTransaction();
+
+        boolean found = false;
+        for(Object o : inscriptions){
+            if(cours == ((Inscription) o).getCours()){
+                ((Inscription) o).setGrade(grade);
+                found = true;
+            }
+        }
+        if(!found){
+            throw new IllegalArgumentException("L'etudiant n'est pas inscrit a ce cours");
+        }
+        session.save(this);
+        session.getTransaction().commit();
     }
 }
