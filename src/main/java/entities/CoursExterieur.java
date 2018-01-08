@@ -9,7 +9,7 @@ public class CoursExterieur extends Cours {
     public CoursExterieur(){
         super();
     }
-    
+
     public CoursExterieur(String ecole){
         super();
         this.ecole = ecole;
