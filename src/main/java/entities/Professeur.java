@@ -10,7 +10,7 @@ public class Professeur implements Enseignant {
     private String sigle;
 
     public Professeur(){}
-    
+
     public Professeur(String prenom,String nom) {
         this.prenom = prenom;
         this.nom = nom;

@@ -1,7 +1,10 @@
 package entities;
 
 import org.hibernate.Session;
+import org.hibernate.annotations.Any;
+import org.hibernate.annotations.AnyMetaDef;
 import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.MetaValue;
 
 import javax.persistence.*;
 
@@ -39,6 +42,17 @@ public class Cours {
     @OneToMany(targetEntity = Inscription.class, fetch = FetchType.LAZY, mappedBy = "cours")
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private Set inscriptions = new HashSet();
+
+    @Any(metaColumn = @Column(name = "enseignant"))
+    @AnyMetaDef(idType = "long", metaType = "string",
+            metaValues = {
+                    @MetaValue(targetEntity = Professeur.class, value = "PROFESSEUR"),
+                    @MetaValue(targetEntity = ChargeDeCours.class, value = "CHARGE_DE_COURS")
+            })
+
+    @JoinColumn(name = "enseignant_id")
+    private Enseignant enseignant;
+
 
     public Cours() {
     }
