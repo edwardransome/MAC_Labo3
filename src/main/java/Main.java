@@ -1,6 +1,4 @@
-import entities.Cours;
-import entities.Etudiant;
-import entities.Professeur;
+import entities.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -46,11 +44,13 @@ public class Main{
         Etudiant michael = new Etudiant("Michael", "Jackson", LocalDate.of(1993,9,8));
         Etudiant eddie = new Etudiant("Eddie", "Malou", LocalDate.of(1994,12,3));
 
-        Cours tweb = new Cours("TWEB",4);
-        Cours amt = new Cours("AMT",3);
-        Cours mac = new Cours("MAC",4);
-
         Professeur professeur = new Professeur("Jean","Yves");
+        ChargeDeCours chargeDeCours = new ChargeDeCours("pionpion");
+
+        Cours tweb = new Cours("TWEB",4,professeur);
+        Cours amt = new Cours("AMT",3,professeur);
+        Cours mac = new CoursExterieur("MAC",4,chargeDeCours,"HEIG");
+
 
         //Incscrire des eleves a des cours
         bob.ajouterCours(tweb);
@@ -72,6 +72,10 @@ public class Main{
         session.save(tweb);
         session.save(amt);
         session.save(mac);
+
+        //Save les enseignants
+        session.save(professeur);
+        session.save(chargeDeCours);
 
         session.getTransaction().commit();
     }

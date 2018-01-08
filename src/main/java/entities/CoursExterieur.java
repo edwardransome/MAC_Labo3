@@ -6,12 +6,17 @@ import javax.persistence.Entity;
 public class CoursExterieur extends Cours {
     private String ecole;
 
-    public CoursExterieur(){
+    public CoursExterieur() {
         super();
     }
 
-    public CoursExterieur(String ecole){
+    public CoursExterieur(String ecole) {
         super();
+        this.ecole = ecole;
+    }
+
+    public CoursExterieur(String titre, int credit,Enseignant enseignant ,String ecole) {
+        super(titre, credit, enseignant);
         this.ecole = ecole;
     }
 
@@ -24,7 +29,7 @@ public class CoursExterieur extends Cours {
     }
 
     @Override
-    public String toString(){
-        return super.toString() + ", ecole : "+ ecole;
+    public String toString() {
+        return super.toString() + ", ecole : " + ecole;
     }
 }

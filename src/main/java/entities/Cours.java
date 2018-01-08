@@ -57,9 +57,10 @@ public class Cours {
     public Cours() {
     }
 
-    public Cours(String titre, int credit) {
+    public Cours(String titre, int credit, Enseignant enseignant) {
         this.titre = titre;
         this.credit = credit;
+        this.enseignant = enseignant;
     }
 
     public String toString(){
@@ -110,4 +111,11 @@ public class Cours {
                 .collect(Collectors.toList());
     }
 
+    public Enseignant getEnseignant() {
+        return enseignant;
+    }
+
+    public void setEnseignant(Enseignant enseignant) {
+        this.enseignant = enseignant;
+    }
 }
