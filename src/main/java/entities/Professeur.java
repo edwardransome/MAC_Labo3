@@ -60,7 +60,7 @@ public class Professeur implements Enseignant {
 
     @Override
     public String toString() {
-        return "Pr: " + nom + " " + prenom + " [" + sigle + "]";
+        return "Prof. " + nom + " " + prenom + " [" + sigle + "]";
     }
 
 }
