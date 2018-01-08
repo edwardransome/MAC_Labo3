@@ -1,10 +1,13 @@
 package entities;
 
+import org.hibernate.Session;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
 import static javax.persistence.GenerationType.IDENTITY;
@@ -105,5 +108,12 @@ public class Etudiant {
 
     public void ajouterCours(Cours cours){
         Inscription i = new Inscription(cours,this,null);
+    }
+
+    public List<Cours> coursNonCredites(Session session){
+        session.beginTransaction();
+        LinkedList<Cours> result = new LinkedList<>();
+        Etudiant moi = session.load(this);
+        session.getTransaction().commit();
     }
 }
