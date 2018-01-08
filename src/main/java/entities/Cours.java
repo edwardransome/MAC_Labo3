@@ -21,6 +21,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Table(name = "cours")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Cours {
     private final int TITRE_LENGTH = 45;
 
