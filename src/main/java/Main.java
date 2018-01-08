@@ -130,6 +130,9 @@ public class Main{
 
         michael.attribuerGrade(amt,'2',session);
 
+        System.out.println("Get all courses with no grades:");
+        michael.coursNonCredites(session).forEach(p -> System.out.println(p.toString()));
+
         session.close();
         sessionFactory.close();
 

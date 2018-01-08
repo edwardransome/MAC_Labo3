@@ -130,7 +130,12 @@ public class Etudiant {
     public List<Cours> coursNonCredites(Session session){
         session.beginTransaction();
         LinkedList<Cours> result = new LinkedList<>();
-        Etudiant moi = session.load(this);
+        Set<Cours> mesCours = this.getCours();
+        inscriptions.stream()
+                .filter(p -> ((Inscription)p).getGrade() == '\0')
+                .forEach(p -> result.add(((Inscription)p).getCours()));
+
         session.getTransaction().commit();
+        return result;
     }
 }
