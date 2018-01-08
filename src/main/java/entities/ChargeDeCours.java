@@ -34,7 +34,7 @@ public class ChargeDeCours implements Enseignant {
 
     @Override
     public String toString() {
-        return "Charge de cours:" + nomComplet;
+        return "Chargé de cours: " + nomComplet;
     }
 
 }

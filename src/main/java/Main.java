@@ -15,7 +15,8 @@ public class Main{
         System.out.println("Cours: ");
 
         for(Cours c: cours){
-            System.out.println(c.getTitre());
+            System.out.println(c);
+            System.out.println("Enseigné par : "+c.getEnseignant());
             c.getEtudiants().forEach(etudiant -> {
                 System.out.print("\t- ");
                 System.out.println(etudiant);
