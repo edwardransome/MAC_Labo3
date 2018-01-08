@@ -1,4 +1,4 @@
-package entities;
+package models;
 
 public interface Enseignant {
 }

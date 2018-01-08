@@ -5,12 +5,12 @@
 
 <hibernate-configuration>
     <session-factory>
-        <mapping class="entities.Etudiant" />
-        <mapping class="entities.Cours" />
-        <mapping class="entities.Inscription" />
-        <mapping class="entities.CoursExterieur" />
-        <mapping class="entities.Enseignant" />
-        <mapping class="entities.Professeur" />
-        <mapping class="entities.ChargeDeCours" />
+        <mapping class="models.Etudiant" />
+        <mapping class="models.Cours" />
+        <mapping class="models.Inscription" />
+        <mapping class="models.CoursExterieur" />
+        <mapping class="models.Enseignant" />
+        <mapping class="models.Professeur" />
+        <mapping class="models.ChargeDeCours" />
     </session-factory>
 </hibernate-configuration>

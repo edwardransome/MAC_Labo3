@@ -1,4 +1,4 @@
-package entities;
+package models;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;

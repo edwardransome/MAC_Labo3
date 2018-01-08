@@ -1,4 +1,4 @@
-package entities;
+package models;
 
 import org.hibernate.Session;
 import org.hibernate.annotations.Any;
