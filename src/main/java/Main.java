@@ -78,7 +78,6 @@ public class Main{
         session.save(mac);
 
 
-
         session.getTransaction().commit();
     }
 

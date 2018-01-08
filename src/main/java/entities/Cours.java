@@ -44,7 +44,7 @@ public class Cours {
     private Set inscriptions = new HashSet();
 
     @Any(metaColumn = @Column(name = "enseignant"))
-    @AnyMetaDef(idType = "long", metaType = "string",
+    @AnyMetaDef(idType = "int", metaType = "string",
             metaValues = {
                     @MetaValue(targetEntity = Professeur.class, value = "PROFESSEUR"),
                     @MetaValue(targetEntity = ChargeDeCours.class, value = "CHARGE_DE_COURS")

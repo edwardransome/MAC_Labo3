@@ -19,6 +19,7 @@ public class ChargeDeCours implements Enseignant {
     private int id;
 
     public ChargeDeCours(){}
+
     public ChargeDeCours(String nomComplet){
         this.nomComplet=nomComplet;
     }
