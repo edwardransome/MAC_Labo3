@@ -120,6 +120,15 @@ public class Main{
 
         session.getTransaction().commit();
 
+        //refresh
+        session.beginTransaction();
+        amt = (Cours)session.load(Cours.class, new Integer(3));
+        michael = (Etudiant) session.load(Etudiant.class, new Integer(2));
+        session.getTransaction().commit();
+
+        System.out.println("Start transaction 5 : addGrade");
+
+        michael.attribuerGrade(amt,'2',session);
 
         session.close();
         sessionFactory.close();
