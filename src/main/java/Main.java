@@ -63,10 +63,12 @@ public class Main{
         //Incscrire des eleves a des cours
         bob.ajouterCours(tweb);
         bob.ajouterCours(mac);
+        bob.ajouterCours(amt);
         michael.ajouterCours(amt);
         michael.ajouterCours(tweb);
         michael.ajouterCours(mac);
         eddie.ajouterCours(tweb);
+        eddie.ajouterCours(amt);
 
         //Save les etudiants
         session.save(bob);
@@ -84,12 +86,15 @@ public class Main{
 
 
         System.out.println("Start transaction 2");
+        //michael.attribuerGrade(amt,'2',session);
 
         session.beginTransaction();
 
 
         afficheEtudiants(session);
         afficheCours(session);
+
+        //List<Etudiant> etudiantList = amt.etudiantsEnAttente(session);
 
         session.getTransaction().commit();
 
@@ -122,12 +127,10 @@ public class Main{
 
         //refresh
         session.beginTransaction();
-        amt = (Cours)session.load(Cours.class, new Integer(3));
         michael = (Etudiant) session.load(Etudiant.class, new Integer(2));
         session.getTransaction().commit();
 
         System.out.println("Start transaction 5 : addGrade");
-
         michael.attribuerGrade(amt,'2',session);
 
         session.close();
