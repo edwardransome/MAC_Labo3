@@ -1,5 +1,7 @@
 package entities;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 
 import java.util.HashSet;
@@ -30,8 +32,8 @@ public class Cours {
     @Column(name = "credit", nullable = false)
     private int credit;
 
-    @OneToMany(targetEntity = Inscription.class, fetch = FetchType.LAZY,
-            cascade = CascadeType.REMOVE, mappedBy = "cours")
+    @OneToMany(targetEntity = Inscription.class, fetch = FetchType.LAZY, mappedBy = "cours")
+    @Cascade(org.hibernate.annotations.CascadeType.REMOVE)
     private Set inscriptions = new HashSet();
 
     public Cours() {

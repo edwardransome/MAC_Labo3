@@ -1,5 +1,7 @@
 package entities;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.HashSet;
@@ -35,8 +37,8 @@ public class Etudiant {
     @Column(name = "date", nullable = false)
     private LocalDate date;
 
-    @OneToMany(targetEntity = Inscription.class, fetch = FetchType.LAZY,
-    cascade = CascadeType.REMOVE, mappedBy = "etudiant")
+    @OneToMany(targetEntity = Inscription.class, fetch = FetchType.LAZY, mappedBy = "etudiant")
+    @Cascade(org.hibernate.annotations.CascadeType.REMOVE)
     private Set inscriptions = new HashSet();
 
     public Etudiant() {
