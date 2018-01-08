@@ -1,9 +1,12 @@
 package entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 
 @Entity
 public class CoursExterieur extends Cours {
+
+    @Column(name = "ecole", nullable = false, length = 45)
     private String ecole;
 
     public CoursExterieur() {
