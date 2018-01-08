@@ -8,5 +8,9 @@
         <mapping class="entities.Etudiant" />
         <mapping class="entities.Cours" />
         <mapping class="entities.Inscription" />
+        <mapping class="entities.CoursExterieur" />
+        <mapping class="entities.Enseignant" />
+        <mapping class="entities.Professeur" />
+        <mapping class="entities.ChargeDeCours" />
     </session-factory>
 </hibernate-configuration>

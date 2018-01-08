@@ -44,8 +44,8 @@ public class Main{
         Etudiant michael = new Etudiant("Michael", "Jackson", LocalDate.of(1993,9,8));
         Etudiant eddie = new Etudiant("Eddie", "Malou", LocalDate.of(1994,12,3));
 
-        Professeur professeur = new Professeur("Jean","Yves");
-        ChargeDeCours chargeDeCours = new ChargeDeCours("pionpion");
+        Enseignant professeur = new Professeur("Jean","Yves");
+        Enseignant chargeDeCours = new ChargeDeCours("pionpion");
 
         Cours tweb = new Cours("TWEB",4,professeur);
         Cours amt = new Cours("AMT",3,professeur);
@@ -62,6 +62,10 @@ public class Main{
         eddie.ajouterCours(tweb);
         eddie.ajouterCours(amt);
 
+        //Save les enseignants
+        session.save(professeur);
+        session.save(chargeDeCours);
+
         //Save les etudiants
         session.save(bob);
         session.save(aurelie);
@@ -73,9 +77,7 @@ public class Main{
         session.save(amt);
         session.save(mac);
 
-        //Save les enseignants
-        session.save(professeur);
-        session.save(chargeDeCours);
+
 
         session.getTransaction().commit();
     }
