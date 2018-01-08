@@ -106,6 +106,10 @@ public class Main{
 
         session.getTransaction().commit();
 
+
+        session.close();
+        session = sessionFactory.openSession();
+
         System.out.println("Start transaction 4");
 
         session.beginTransaction();

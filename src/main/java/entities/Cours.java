@@ -33,7 +33,7 @@ public class Cours {
     private int credit;
 
     @OneToMany(targetEntity = Inscription.class, fetch = FetchType.LAZY, mappedBy = "cours")
-    @Cascade(org.hibernate.annotations.CascadeType.REMOVE)
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private Set inscriptions = new HashSet();
 
     public Cours() {

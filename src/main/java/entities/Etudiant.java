@@ -38,7 +38,7 @@ public class Etudiant {
     private LocalDate date;
 
     @OneToMany(targetEntity = Inscription.class, fetch = FetchType.LAZY, mappedBy = "etudiant")
-    @Cascade(org.hibernate.annotations.CascadeType.REMOVE)
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private Set inscriptions = new HashSet();
 
     public Etudiant() {

@@ -1,7 +1,6 @@
 package entities;
 
 import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
 import javax.persistence.*;
 
 @Entity
@@ -18,12 +17,12 @@ public class Inscription {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cours_id", nullable = true)
-    @Cascade(CascadeType.SAVE_UPDATE)
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     private Cours cours;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "etudiant_id", nullable = true)
-    @Cascade(CascadeType.SAVE_UPDATE)
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     private Etudiant etudiant;
 
     public Inscription(){
