@@ -33,7 +33,7 @@ public class Main{
             System.out.println(etudiant);
             etudiant.getCours().forEach(course -> {
                 System.out.print("\t- ");
-                System.out.println(course.getTitre());
+                System.out.println(course + ", enseigné par : " + course.getEnseignant());
             });
         }
     }
