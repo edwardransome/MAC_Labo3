@@ -1,11 +1,16 @@
 package entities;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.annotations.Cascade;
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Restrictions;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
 import static javax.persistence.GenerationType.IDENTITY;
@@ -123,5 +128,24 @@ public class Etudiant {
         }
         session.save(this);
         session.getTransaction().commit();
+    }
+
+    public List<Enseignant> getEnseignants(Session session){
+        LinkedList<Enseignant> result = new LinkedList<>();
+
+        Criteria criteria = session.createCriteria(Inscription.class);
+        Criterion critere = Restrictions.eq("etudiant" , this);
+        criteria.add(critere);
+
+        List<Inscription> inscriptions = criteria.list();
+
+        for(Inscription inscription : inscriptions){
+            Enseignant enseignant = inscription.getCours().getEnseignant();
+            if(!result.contains(enseignant)){
+                result.add(enseignant);
+            }
+        }
+
+        return result;
     }
 }
