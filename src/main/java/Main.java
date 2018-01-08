@@ -102,6 +102,9 @@ public class Main{
 
         afficheEtudiants(session);
         afficheCours(session);
+        Etudiant exemple = session.load(Etudiant.class, 1);
+        System.out.println("List des étudiants de l'étudiant " + exemple.getNom());
+        exemple.getEnseignants(session).forEach(p -> System.out.println(p));
 
 
         session.getTransaction().commit();
