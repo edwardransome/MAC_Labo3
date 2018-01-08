@@ -1,5 +1,6 @@
 import entities.Cours;
 import entities.Etudiant;
+import org.hibernate.LockOptions;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -129,9 +130,6 @@ public class Main{
         session.beginTransaction();
         michael = (Etudiant) session.load(Etudiant.class, new Integer(2));
         session.getTransaction().commit();
-
-        System.out.println("Start transaction 5 : addGrade");
-        michael.attribuerGrade(amt,'2',session);
 
         System.out.println("Get all courses with no grades:");
         michael.coursNonCredites(session).forEach(p -> System.out.println(p.toString()));
