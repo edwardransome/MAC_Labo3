@@ -1,3 +1,5 @@
+import controllers.ORMAccess;
+import controllers.StudentsController;
 import models.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -84,38 +86,20 @@ public class Main{
 
     public static void main(String [] args)
     {
-        System.out.println("Start session Factory");
-
-        SessionFactory sessionFactory = new Configuration()
-                .configure()
-                .buildSessionFactory();
-
-        Session session = sessionFactory.openSession();
-
-
-        System.out.println("Start transaction 1");
-        peuplement(session);
-
-        System.out.println("Start transaction 2");
-
-        session.beginTransaction();
-
-
-        afficheEtudiants(session);
-        afficheCours(session);
-        Etudiant exemple = session.load(Etudiant.class, 1);
-        System.out.println("List des étudiants de l'étudiant " + exemple.getNom() + " : ");
-        exemple.getEnseignants(session).forEach(p -> System.out.println(p));
-
-
-        session.getTransaction().commit();
-
-        session.close();
-        sessionFactory.close();
-
-        System.out.println("Session Factory closed");
-
-        
+        ORMAccess ormAccess = new ORMAccess();
+        try {
+            ormAccess.peuplerLaBase();
+            StudentsController ctrEtudiants1 = new StudentsController(ormAccess);
+            StudentsController ctrEtudiants2 = new StudentsController(ormAccess);
+            while (ctrEtudiants1.isAlive() || ctrEtudiants2.isAlive())
+                try {Thread.sleep(500);}catch(InterruptedException e) {}
+        }
+        catch (Exception e){
+            System.out.println(e.toString());
+        }
+        finally {
+            ORMAccess.terminate();
+        }
 
     }
 }

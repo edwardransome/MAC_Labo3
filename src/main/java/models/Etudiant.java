@@ -72,7 +72,7 @@ public class Etudiant {
         return prenom;
     }
 
-    private void setPrenom(String prenom) {
+    public void setPrenom(String prenom) {
         this.prenom = prenom;
     }
 
@@ -80,7 +80,7 @@ public class Etudiant {
         return nom;
     }
 
-    private void setNom(String nom) {
+    public void setNom(String nom) {
         this.nom = nom;
     }
 
@@ -91,6 +91,8 @@ public class Etudiant {
     private void setDate(LocalDate date) {
         this.date = date;
     }
+
+    public LocalDate getDateInscription(){ return date; }
 
 
     public Set<Inscription> getInscriptions() {
@@ -148,4 +150,6 @@ public class Etudiant {
 
         return result;
     }
+
+
 }
