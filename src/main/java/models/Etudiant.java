@@ -34,6 +34,9 @@ public class Etudiant {
     @Column(name = "id", unique = true, nullable = false)
     private int id;
 
+    @Version
+    private long version;
+
     @Column(name = "prenom", nullable = false, length = PRENOM_LENGTH)
     private String prenom;
 
@@ -151,5 +154,11 @@ public class Etudiant {
         return result;
     }
 
+    public long getVersion() {
+        return version;
+    }
 
+    public void setVersion(long version) {
+        this.version = version;
+    }
 }
